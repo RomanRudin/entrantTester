@@ -7,7 +7,7 @@ class Parser():
         self.soup = BeautifulSoup(self.content, 'lxml')
 
         self.me = 0
-        self.full_search_mode = True
+        self.full_search_mode = False
         self.place = 0
 
         self.unique = self.__get_unique()
@@ -79,6 +79,6 @@ class Parser():
                             flag = False
                             break
             else: break
-        for i in range(self.place):
+        for i in range(min(self.place, len(pool))):
             self.unique.append(pool[i]['document'])
         return [len(entrants), entrants], [len(original_entrants), original_entrants]
